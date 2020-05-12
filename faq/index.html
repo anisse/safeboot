@@ -1,0 +1,511 @@
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1, mkdocs-material-5.1.0">
+    
+<meta property="og:title" content="Safeboot: Boot Linux more safely">
+<meta property="og:description" content="Debian package to enable UEFI SecureBoot, enroll your own hardware backed platform key, sign the kernel and initrd, decrypt the disk with the TPM, and enable system integrity protection with dmverity">
+<meta property="og:url" content="https://safeboot.dev/">
+<meta property="og:image" content="https://safeboot.dev/images/installation-header.jpg">
+
+    
+      
+        <title>FAQ - safeboot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.89dc9fe3.min.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ecd4686e.min.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
+      
+    
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../extra.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="indigo" data-md-color-accent="purple">
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#frequently-asked-questions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href=".." title="safeboot" class="md-header-nav__button md-logo" aria-label="safeboot">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" /></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            safeboot
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              FAQ
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z" /></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/osresearch/safeboot/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+        
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="safeboot" class="md-nav__button md-logo" aria-label="safeboot">
+      
+  <img src="../images/logo.png" alt="logo">
+
+    </a>
+    safeboot
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/osresearch/safeboot/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="Overview" class="md-nav__link">
+      Overview
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../install/" title="Installation" class="md-nav__link">
+      Installation
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        FAQ
+        <span class="md-nav__icon md-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3,9H17V7H3V9M3,13H17V11H3V13M3,17H17V15H3V17M19,17H21V15H19V17M19,7V9H21V7H19M19,13H21V11H19V13Z" /></svg>
+        </span>
+      </label>
+    
+    <a href="./" title="FAQ" class="md-nav__link md-nav__link--active">
+      FAQ
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-threat-model" class="md-nav__link">
+    What is the threat model?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-does-the-tpm-unsealing-fail-often" class="md-nav__link">
+    Why does the TPM unsealing fail often?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-write-to-the-root-filesystem" class="md-nav__link">
+    How do I write to the root filesystem?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-happens-if-i-lose-the-signing-key" class="md-nav__link">
+    What happens if I lose the signing key?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-it-possible-to-reset-the-uefi-or-bios-password" class="md-nav__link">
+    Is it possible to reset the UEFI or BIOS password?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-it-work-on-the-thinkpad-701c" class="md-nav__link">
+    Does it work on the Thinkpad 701c?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+      </span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-threat-model" class="md-nav__link">
+    What is the threat model?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-does-the-tpm-unsealing-fail-often" class="md-nav__link">
+    Why does the TPM unsealing fail often?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-i-write-to-the-root-filesystem" class="md-nav__link">
+    How do I write to the root filesystem?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-happens-if-i-lose-the-signing-key" class="md-nav__link">
+    What happens if I lose the signing key?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#is-it-possible-to-reset-the-uefi-or-bios-password" class="md-nav__link">
+    Is it possible to reset the UEFI or BIOS password?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-it-work-on-the-thinkpad-701c" class="md-nav__link">
+    Does it work on the Thinkpad 701c?
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                  
+                
+                
+                <h1 id="frequently-asked-questions">Frequently Asked Questions</h1>
+<h2 id="what-is-the-threat-model">What is the threat model?</h2>
+<p><img alt="Your threat model is not my threat model, but your threat model is ok" src="https://live.staticflickr.com/5575/31437292510_99ffd0dd11_b.jpg" /></p>
+<p><code>safeboot</code> intends to protect the integrity of the boot process and
+runtime integrity of the system against adversaries with external physical
+access to the device, as well as limited internal physical access.</p>
+<ul>
+<li>Reprogramming the code in SPI flash is detected by Intel Bootguard's verification of the IBB during boot</li>
+<li>Writing new platform keys in the SPI flash is detected by measurement of the UEFI configuration into the TPM</li>
+<li>TPM tampering on the LPC bus is not necessarily detectable by this system; an adversary with unlimited internal physical access can also probe sealed secrets
+(TODO: add TPM PIN for high assurance users)</li>
+<li>fTPM tampering is out of scope since the ME is the root of all trust in the system</li>
+<li>Booting from an unauthorized external device is prevented since only PK signed executables will be loaded.</li>
+<li>Adversaries with physical write access to the disk can't change the kernel or initrd on the drive since the signature is checked when they are loaded into RAM.</li>
+<li>Adversaries with write access to the root filesystem can't change any of the lockdown configuration since their modifications will be detectable by the dmverity hashes.  They can't recompute the hashes since the root is signed by the PK.</li>
+<li>Run time access to the disk encryption key is prevented by the Linux kernel keyring mechanism, even against an adversary with root access.</li>
+<li>The Linux lockdown patches prevent a user with root access from loading new kernel modules, modifying the disk image, or poking at raw memory.</li>
+<li>TODO: prevent external media access, list of modules to not load, etc</li>
+</ul>
+<h2 id="why-does-the-tpm-unsealing-fail-often">Why does the TPM unsealing fail often?</h2>
+<p><img alt="TPM with wires soldered to the pins" src="../images/tpm.jpg" /></p>
+<p>It's super fragile right now.  Need to reconsider which PCRs are included
+and what they mean.  Suggestions welcome!</p>
+<h2 id="how-do-i-write-to-the-root-filesystem">How do I write to the root filesystem?</h2>
+<p>With SIP enabled it is not possible to modify the root filesystem.
+You must reboot into recovery mode with <code>safeboot recovery-reboot</code>
+and decrypt the disk with the recovery password.  Once decrypted,
+you can run <code>safeboot remount</code> to unlock the raw device and remount
+it <code>rw</code>.  After making modifications, it is necessary to sign
+the new root hashes with <code>safeboot linux-sign</code>.</p>
+<h2 id="what-happens-if-i-lose-the-signing-key">What happens if I lose the signing key?</h2>
+<p>The best solution is to authenticate with the supervisor password
+to the UEFI Setup, re-enter SecureBoot setup mode and clear the key
+database, then boot into recovery mode.</p>
+<p>You can then re-run <code>safeboot yubikey-init</code> or <code>safeboot key-init</code>
+and <code>safeboot uefi-sign-keys</code> to repopulate the database, and
+<code>safeboot recovery-sign</code> as well as <code>safeboot linux-sign</code> to re-sign
+the two kernel images, boot into the linux image and re-seal the LUKS
+key into the TPM with <code>safeboot luks-seal</code>.</p>
+<h2 id="is-it-possible-to-reset-the-uefi-or-bios-password">Is it possible to reset the UEFI or BIOS password?</h2>
+<p>On modern Thinkpads the UEFI password is in the EC, not in the
+SPI flash.  You need a Bootguard bypass to get into Setup in that
+case; perhaps someone has some zerodays that will give them access...</p>
+<h2 id="does-it-work-on-the-thinkpad-701c">Does it work on the Thinkpad 701c?</h2>
+<p><img alt="Butterfly keyboard animation" src="https://farm1.staticflickr.com/793/39371776450_a8b0cd4184_o_d.gif" />
+Unfortunately the wonderful <a href="https://trmm.net/Butterfly">butterfly keyboard Thinkpad</a>
+predates UEFI by a few years, so it does not have a very secure
+boot process.  The X1 Carbon is a much nicer replacement.</p>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: May 11, 2020
+    
+  </small>
+</div>
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../install/" title="Installation" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20,11V13H8L13.5,18.5L12.08,19.92L4.16,12L12.08,4.08L13.5,5.5L8,11H20Z" /></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Installation
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.36cbf620.min.js"></script>
+      <script src="../assets/javascripts/bundle.00c583dd.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.7f7c8775.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+    
+  </body>
+</html>
